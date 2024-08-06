@@ -10,9 +10,12 @@ class Bureaucrat;
 class Form
 {
 	public:
-		Form(std::string name, int grade_sign);
-		Form(int grade_sign);
+		Form(std::string name, int grade_sign, int execute_sign);
+		Form(int grade_sign, int execute_sign);
 		~Form();
+
+		Form(const Form &src);
+		Form& operator=(const Form& other);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -36,7 +39,8 @@ class Form
 
 		std::string getName() const;
 		bool getIsSigned() const;
-		int getGradeSign() const;
+		int getSignGrade() const;
+		int getExecuteGrade() const;
 
 		friend std::ostream& operator<<(std::ostream& os,const Form& f);
 
@@ -44,7 +48,8 @@ class Form
 	private:
 		const std::string name_;
 		bool is_signed_;
-		const int grade_sign_;
+		const int sign_grade_;
+		const int execute_grade_;
 };
 
 #endif

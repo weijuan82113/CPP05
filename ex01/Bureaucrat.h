@@ -15,10 +15,13 @@ class Bureaucrat
 		Bureaucrat(int grade);
 		~Bureaucrat();
 
+		Bureaucrat(const Bureaucrat &src);
+		Bureaucrat& operator=(const Bureaucrat& other);
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				GradeTooHighException(std::string msg);
+				GradeTooHighException();
 				~GradeTooHighException() _NOEXCEPT;
 				const char* what() const _NOEXCEPT;
 			private:
@@ -28,7 +31,7 @@ class Bureaucrat
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				GradeTooLowException(std::string msg);
+				GradeTooLowException();
 				~GradeTooLowException() _NOEXCEPT;
 				const char* what() const _NOEXCEPT;
 			private:
@@ -41,8 +44,9 @@ class Bureaucrat
 		void GradeDecrement();
 
 		friend std::ostream& operator<<(std::ostream& os,const Bureaucrat& b);
+		//ex01
+		void signForm(Form& form);
 
-		void signForm(Form &f);
 	private:
 		const std::string name_;
 		int grade_;

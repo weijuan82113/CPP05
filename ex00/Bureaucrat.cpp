@@ -4,11 +4,11 @@ Bureaucrat::Bureaucrat(const std::string name, int grade):name_(name),grade_(gra
 {
 	if (grade > 150)
 	{
-		throw GradeTooLowException("Exception: the grade has exceeded lowest limit");
+		throw GradeTooLowException();
 	}
 	else if (grade < 1)
 	{
-		throw GradeTooHighException("Exception: the grade has exceeded top limit");
+		throw GradeTooHighException();
 	}
 }
 
@@ -16,11 +16,11 @@ Bureaucrat::Bureaucrat(int grade):grade_(grade)
 {
 	if (grade > 150)
 	{
-		throw GradeTooLowException("Exception: the grade has exceeded lowest limit");
+		throw GradeTooLowException();
 	}
 	else if (grade < 1)
 	{
-		throw GradeTooHighException("Exception: the grade has exceeded top limit");
+		throw GradeTooHighException();
 	}
 }
 Bureaucrat::~Bureaucrat()
@@ -42,7 +42,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 	return *this;
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException(std::string msg):msg_(msg) {};
+Bureaucrat::GradeTooHighException::GradeTooHighException():msg_("Exception: the grade has exceeded top limit") {};
 Bureaucrat::GradeTooHighException::~GradeTooHighException() _NOEXCEPT{};
 
 const char* Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
@@ -50,7 +50,7 @@ const char* Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
 	return msg_.c_str();
 }
 
-Bureaucrat::GradeTooLowException::GradeTooLowException(std::string msg):msg_(msg) {};
+Bureaucrat::GradeTooLowException::GradeTooLowException():msg_("Exception: the grade has exceeded lowest limit") {};
 Bureaucrat::GradeTooLowException::~GradeTooLowException() _NOEXCEPT{};
 
 const char* Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
@@ -71,13 +71,13 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::GradeIncrement()
 {
 	if(--grade_ <= 0)
-		throw(GradeTooHighException("Exception: the grade has exceeded top limit"));
+		throw(GradeTooHighException());
 }
 
 void Bureaucrat::GradeDecrement()
 {
 	if (++grade_ > 150)
-		throw(GradeTooHighException("Exception: the grade has exceeded lowest limit"));
+		throw(GradeTooHighException());
 }
 
 std::ostream& operator<<(std::ostream& os,const Bureaucrat& b)
