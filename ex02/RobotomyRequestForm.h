@@ -17,6 +17,7 @@ class RobotomyRequestForm : virtual public AForm
 		void execute(Bureaucrat const & executor) const;
 	private:
 		std::string target_;
+		static unsigned int calculate_ratio_;
 };
 
 

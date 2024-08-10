@@ -1,5 +1,7 @@
 #include "RobotomyRequestForm.h"
 
+unsigned int RobotomyRequestForm::calculate_ratio_ = 0;
+
 RobotomyRequestForm::RobotomyRequestForm()
 	: AForm("RobotomyRequestForm", 72, 45) {}
 
@@ -43,10 +45,9 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 		throwCommonException("the bureaucrat's execute grade is not enough to execute the form\n");
 	else
 	{
-		int rand = std::rand();
-		std::cout << "test rand : " << rand << std::endl;
-		std::cout << "test rand % 2 : " << rand % 2 << std::endl;
-		if(std::rand()%2 == 0)
+		calculate_ratio_ ++;
+		std::cout << "calculate ratio : " << calculate_ratio_ << std::endl;
+		if(calculate_ratio_ % 2 == 0)
 			std::cout << getTarget() + "has been robotomized successfully 50\\% \\of the time\n";
 		else
 			throwCommonException("The robotomy failed\n");

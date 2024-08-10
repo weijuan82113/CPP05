@@ -202,12 +202,25 @@ int main()
 		RobotomyRequestForm f2(f1);
 		std::cout << "------R4's Common test------\n";
 		Bureaucrat b1("br1_", 45);
-		std::cout << "------R4's successfully test------\n";
+		std::cout << "------R4's successfully1 test------\n";
 		b1.signForm(f2);
 		std::cout << b1 << std::endl;
 		std::cout << f2 << std::endl;
 		b1.executeForm(f2);
-		std::cout << "------R4's successfully test------\n";
+		std::cout << "------R4's successfully1 test------\n";
+		std::cout << "------R4's Common test------\n";
+		//construction with targe
+		RobotomyRequestForm f3("target3_");
+		//copy constructor
+		RobotomyRequestForm f4(f3);
+		std::cout << "------R4's Common test------\n";
+		Bureaucrat b2("br2_", 45);
+		std::cout << "------R4's successfully2 test------\n";
+		b2.signForm(f4);
+		std::cout << b2 << std::endl;
+		std::cout << f4 << std::endl;
+		b1.executeForm(f4);
+		std::cout << "------R4's successfully2 test------\n";
 	}
 	catch(std::exception& e)
 	{
