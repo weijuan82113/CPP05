@@ -10,8 +10,8 @@ class Bureaucrat;
 class Form
 {
 	public:
-		Form(std::string name, int grade_sign, int execute_sign);
-		Form(int grade_sign, int execute_sign);
+		Form(std::string name, int sign_grade, int execute_grade);
+		Form(int sign_grade, int execute_grade);
 		~Form();
 
 		Form(const Form &src);

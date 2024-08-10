@@ -1,10 +1,10 @@
 #include "Form.h"
 
-Form::Form(std::string name, int grade_sign, int execute_sign)
+Form::Form(std::string name, int sign_grade, int execute_grade)
 	:	name_(name),
 		is_signed_(false),
-		sign_grade_(grade_sign),
-		execute_grade_(execute_sign)
+		sign_grade_(sign_grade),
+		execute_grade_(execute_grade)
 {
 	if (sign_grade_ > 150)
 		throw GradeTooLowException("Form Exception: the grade required has exceeded lowest limit");
@@ -12,10 +12,10 @@ Form::Form(std::string name, int grade_sign, int execute_sign)
 		throw GradeTooHighException("Form Exception: the grade required has exceeded top limit");
 }
 
-Form::Form(int grade_sign,int execute_sign)
+Form::Form(int sign_grade,int execute_grade)
 	:	is_signed_(false),
-		sign_grade_(grade_sign),
-		execute_grade_(execute_sign)
+		sign_grade_(sign_grade),
+		execute_grade_(execute_grade)
 {
 	if (sign_grade_ > 150)
 		throw GradeTooLowException("Form Exception: the grade required has exceeded lowest limit");
@@ -30,7 +30,7 @@ Form::Form(const Form &src)
 		sign_grade_(src.getSignGrade()),
 		execute_grade_(src.getExecuteGrade())
 {
-	std::cout << "the Form's copy constructor is called, copy" << src.getName() << " into " << name_ << std::endl;
+	std::cout << "the Form's copy constructor is called, copy " << src.getName() << " into " << name_ << std::endl;
 	*this = src;
 }
 
