@@ -2,6 +2,8 @@
  #define ROBOTOMYREQUESTFORM_H_
 
 #include "AForm.h"
+#include <ctime>
+#include <cstdlib>
 
 class RobotomyRequestForm : virtual public AForm
 {

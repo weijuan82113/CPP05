@@ -2,6 +2,8 @@
  #define ROBOTOMYREQUESTFORM_H_
 
 #include "AForm.h"
+#include <ctime>
+#include <cstdlib>
 
 class RobotomyRequestForm : virtual public AForm
 {
@@ -14,10 +16,9 @@ class RobotomyRequestForm : virtual public AForm
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 
 		std::string getTarget() const;
-		void execute(Bureaucrat const & executor) const;
+		void execute(const Bureaucrat& executor) const;
 	private:
 		std::string target_;
-		static unsigned int calculate_ratio_;
 };
 
 

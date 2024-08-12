@@ -1,47 +1,71 @@
 #include "AForm.h"
 
-AForm::AForm(std::string name, int sign_grade, int execute_grade)
+const int AForm::lowest_grade_ = 150;
+const int AForm::highest_grade_ = 1;
+
+AForm::AForm()
+	:	name_(""), 
+		is_signed_(false),
+		sign_grade_(1),
+		execute_grade_(1)
+{
+	if (sign_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the sign grade required has exceeded lowest limit");
+	else if (sign_grade_ < highest_grade_)
+		throw GradeTooHighException("Form Exception: the sign grade required has exceeded top limit");
+	else if (execute_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded lowest limit");
+	else if (execute_grade_ < highest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded top limit");
+}
+
+AForm::AForm(const int& sign_grade,const int& execute_grade)
+	:	name_(""),
+		is_signed_(false),
+		sign_grade_(sign_grade),
+		execute_grade_(execute_grade)
+{
+	if (sign_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the sign grade required has exceeded lowest limit");
+	else if (sign_grade_ < highest_grade_)
+		throw GradeTooHighException("Form Exception: the sign grade required has exceeded top limit");
+	else if (execute_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded lowest limit");
+	else if (execute_grade_ < highest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded top limit");
+}
+
+AForm::AForm(const std::string& name, const int& sign_grade, const int& execute_grade)
 	:	name_(name),
 		is_signed_(false),
 		sign_grade_(sign_grade),
 		execute_grade_(execute_grade)
 {
-	std::cout << "<AForm> Constructor is called" << std::endl;
-	if (sign_grade_ > 150)
-		throw GradeTooLowException("Form Exception: the grade required has exceeded lowest limit");
-	else if (sign_grade_ < 1)
-		throw GradeTooHighException("Form Exception: the grade required has exceeded top limit");
+	if (sign_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the sign grade required has exceeded lowest limit");
+	else if (sign_grade_ < highest_grade_)
+		throw GradeTooHighException("Form Exception: the sign grade required has exceeded top limit");
+	else if (execute_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded lowest limit");
+	else if (execute_grade_ < highest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded top limit");
 }
 
-AForm::AForm(int sign_grade,int execute_grade)
-	:	is_signed_(false),
-		sign_grade_(sign_grade),
-		execute_grade_(execute_grade)
-{
-	std::cout << "<AForm> Constructor is called" << std::endl;
-	if (sign_grade_ > 150)
-		throw GradeTooLowException("Form Exception: the grade required has exceeded lowest limit");
-	else if (sign_grade_ < 1)
-		throw GradeTooHighException("Form Exception: the grade required has exceeded top limit");
-}
 
-AForm::~AForm()
-{
-	std::cout << "<AForm> Destruction is called" << std::endl;
-}
+AForm::~AForm() {}
 
 AForm::AForm(const AForm &src)
 	:	name_(src.getName() + "_copy"),
 		sign_grade_(src.getSignGrade()),
 		execute_grade_(src.getExecuteGrade())
 {
-	std::cout << "<AForm> Copy constructor is called, copy " << src.getName() << " into " << name_ << std::endl;
+	std::cout << "the Form's copy constructor is called, copy " << src.getName() << " into " << name_ << std::endl;
 	*this = src;
 }
 
 AForm& AForm::operator=(const AForm& other)
 {
-	std::cout << "<AForm> Copy assignment operator is called" << std::endl;
+	std::cout << "Copy assignment operator is called" << std::endl;
 	if (this != &other)
 		is_signed_ = other.getIsSigned();
 	return *this;
@@ -63,6 +87,7 @@ const char* AForm::GradeTooLowException::what() const _GLIBCXX_TXN_SAFE_DYN _GLI
 	return msg_.c_str();
 }
 
+
 //------ex02 Common Exception------
 AForm::CommonException::CommonException(std::string msg):msg_(msg) {}
 AForm::CommonException::~CommonException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW {}
@@ -73,13 +98,13 @@ const char* AForm::CommonException::what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_
 }
 
 //ネストクラスを呼ぶ関数
-void AForm::throwCommonException(std::string msg) const
+void AForm::throwCommonException(const std::string& msg) const
 {
-	std::cout << "[Common Exception] ";
+	std::cout << "Couldn't execute the form becasue ";
 	throw CommonException(msg);
 }
 
-//------ex02------
+//------ex02 Common Exception------
 
 std::string AForm::getName() const
 {
@@ -101,25 +126,27 @@ int AForm::getExecuteGrade() const
 	return execute_grade_;
 }
 
-std::ostream& operator<<(std::ostream& os,const AForm& f)
+std::ostream& AForm::operator<<(std::ostream& os) const
 {
 	os << "【the form's information】\n"
-		<< "name: " + f.getName() << ", is_signed: "
-		<< f.getIsSigned()
+		<< "name: " + this->getName() << ", is_signed: "
+		<< this->getIsSigned()
 		<< ", reguired grade: "
-		<< f.getSignGrade()
+		<< this->getSignGrade()
 		<< ", executed grade: "
-		<< f.getExecuteGrade();
+		<< this->getExecuteGrade()
+		<< '\n';
 	return os;
 }
 
-void AForm::beSigned(Bureaucrat &b)
+//ex01
+void AForm::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() <= sign_grade_)
 		is_signed_ = true;
 	else
 	{
-		std::cout << b.getName() << " couldn't sign " << getName() << " because " << '\n';
+		std::cout << b.getName() << " couldn't sign " << getName() << " because ";
 		throw GradeTooLowException("Bureaucrat's grade is too low to sign");
 	}
 }

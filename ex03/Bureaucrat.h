@@ -11,11 +11,12 @@ class AForm;
 class Bureaucrat
 {
 	public:
-		Bureaucrat(const std::string name, int grade);
-		Bureaucrat(int grade);
+		Bureaucrat();
+		Bureaucrat(const int& grade);
+		Bureaucrat(const std::string& name, const int& grade);
 		~Bureaucrat();
 
-		Bureaucrat(const Bureaucrat &src);
+		Bureaucrat(const Bureaucrat& src);
 		Bureaucrat& operator=(const Bureaucrat& other);
 
 		class GradeTooHighException : public std::exception
@@ -38,22 +39,22 @@ class Bureaucrat
 				std::string msg_;
 		};
 
-
-
 		std::string getName() const;
 		int getGrade() const;
 		void GradeIncrement();
 		void GradeDecrement();
 
-		friend std::ostream& operator<<(std::ostream& os,const Bureaucrat& b);
+		std::ostream& operator<<(std::ostream& os) const;
 		//ex01
 		void signForm(AForm& form);
 		//ex02
-		void executeForm(AForm& form);
+		void executeForm(const AForm& form);
 
 	private:
 		const std::string name_;
 		int grade_;
+		static const int lowest_grade_;
+		static const int highest_grade_;
 
 };
 #endif

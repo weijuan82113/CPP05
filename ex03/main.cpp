@@ -6,7 +6,7 @@
 // __attribute__((destructor))
 // static void destructor() {
 //     system("leaks -q Intern");
-// }
+}
 
 int main()
 {
@@ -33,6 +33,14 @@ int main()
         rrf = someRandomIntern.makeForm("robotomy request", "Bender2");
         Bureaucrat b("br2_", 45);
         b.signForm(*rrf);
+        b.executeForm(*rrf);
+        b.executeForm(*rrf);
+        b.executeForm(*rrf);
+        b.executeForm(*rrf);
+        b.executeForm(*rrf);
+        b.executeForm(*rrf);
+        b.executeForm(*rrf);
+        b.executeForm(*rrf);
         b.executeForm(*rrf);
         b.executeForm(*rrf);
         delete(rrf);

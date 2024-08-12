@@ -13,7 +13,7 @@ class AForm
 		AForm();
 		AForm(const int& sign_grade, const int& execute_grade);
 		AForm(const std::string& name, const int& sign_grade, const int& execute_grade);
-		~AForm();
+		virtual ~AForm();
 
 		AForm(const AForm& src);
 		AForm& operator=(const AForm& other);

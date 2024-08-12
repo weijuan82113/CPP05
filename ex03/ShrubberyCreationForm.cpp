@@ -1,12 +1,8 @@
 #include "ShrubberyCreationForm.h"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	: AForm("ShrubberyCreationForm", 145, 137) {}
-
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-	std::cout << "<ShrubberyCreationForm> Destruction is called" << std::endl;
-}
+	: AForm("ShrubberyCreationForm", 145, 137),
+		target_("") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 	: AForm("ShrubberyCreationForm", 145, 137),
@@ -14,6 +10,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 {
 	std::cout << "<ShrubberyCreationForm> Constructor is called" << std::endl;
 }
+
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
 	: AForm(src)
@@ -39,7 +37,7 @@ std::string ShrubberyCreationForm::getTarget() const
 	return target_;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
 	if (!this->getIsSigned())
 		throwCommonException("the form is unsigned!\n");
