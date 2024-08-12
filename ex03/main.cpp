@@ -6,7 +6,7 @@
 // __attribute__((destructor))
 // static void destructor() {
 //     system("leaks -q Intern");
-}
+// }
 
 int main()
 {
