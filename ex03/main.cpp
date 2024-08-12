@@ -1,11 +1,12 @@
 #include "Intern.h"
 #include "AForm.h"
 #include "Bureaucrat.h"
+// #include <stdlib.h>
 
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q Intern");
-}
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q Intern");
+// }
 
 int main()
 {

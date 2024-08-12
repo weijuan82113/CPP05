@@ -1,9 +1,10 @@
 #include "Bureaucrat.h"
+// #include <stdlib.h>
 
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q Bureaucrat");
-}
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q Bureaucrat");
+// }
 
 int main()
 {

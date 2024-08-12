@@ -21,8 +21,8 @@ class AForm
 		{
 			public:
 				GradeTooHighException(std::string msg);
-				~GradeTooHighException() _NOEXCEPT;
-				const char* what() const _NOEXCEPT;
+				~GradeTooHighException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+				const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
 			private:
 				std::string msg_;
 		};
@@ -31,8 +31,8 @@ class AForm
 		{
 			public:
 				GradeTooLowException(std::string msg);
-				~GradeTooLowException() _NOEXCEPT;
-				const char* what() const _NOEXCEPT;
+				~GradeTooLowException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+				const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
 			private:
 				std::string msg_;
 		};
@@ -42,8 +42,8 @@ class AForm
 		{
 			public:
 				CommonException(std::string msg);
-				~CommonException() _NOEXCEPT;
-				const char* what() const _NOEXCEPT;
+				~CommonException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+				const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
 			private:
 				std::string msg_;
 		};

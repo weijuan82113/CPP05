@@ -19,8 +19,8 @@ class Bureaucrat
 		{
 			public:
 				GradeTooHighException();
-				~GradeTooHighException() _NOEXCEPT;
-				const char* what() const _NOEXCEPT;
+				~GradeTooHighException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+				const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
 			private:
 				std::string msg_;
 		};
@@ -29,8 +29,8 @@ class Bureaucrat
 		{
 			public:
 				GradeTooLowException();
-				~GradeTooLowException() _NOEXCEPT;
-				const char* what() const _NOEXCEPT;
+				~GradeTooLowException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+				const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
 			private:
 				std::string msg_;
 		};

@@ -45,26 +45,26 @@ AForm& AForm::operator=(const AForm& other)
 }
 
 AForm::GradeTooHighException::GradeTooHighException(std::string msg):msg_(msg) {};
-AForm::GradeTooHighException::~GradeTooHighException() _NOEXCEPT{};
+AForm::GradeTooHighException::~GradeTooHighException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW {};
 
-const char* AForm::GradeTooHighException::what() const _NOEXCEPT
+const char* AForm::GradeTooHighException::what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW
 {
 	return msg_.c_str();
 }
 
 AForm::GradeTooLowException::GradeTooLowException(std::string msg):msg_(msg) {};
-AForm::GradeTooLowException::~GradeTooLowException() _NOEXCEPT{};
+AForm::GradeTooLowException::~GradeTooLowException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW {};
 
-const char* AForm::GradeTooLowException::what() const _NOEXCEPT
+const char* AForm::GradeTooLowException::what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW
 {
 	return msg_.c_str();
 }
 
 //------ex02 Common Exception------
 AForm::CommonException::CommonException(std::string msg):msg_(msg) {}
-AForm::CommonException::~CommonException() _NOEXCEPT {}
+AForm::CommonException::~CommonException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW {}
 
-const char* AForm::CommonException::what() const _NOEXCEPT
+const char* AForm::CommonException::what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW
 {
 	return msg_.c_str();
 }

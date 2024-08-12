@@ -3,11 +3,12 @@
 #include "PresidentialPardonForm.h"
 #include "RobotomyRequestForm.h"
 #include "ShrubberyCreationForm.h"
+// #include <stdlib.h>
 
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q 28B28C");
-}
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q 28B28C");
+// }
 
 int main()
 {
