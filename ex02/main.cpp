@@ -38,8 +38,8 @@ int main()
 		std::cout << "------p1's Common test------\n";
 		Bureaucrat b1("br1_", 26);
 		std::cout << "------p1's sign without enough grade test------\n";
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.signForm(f2);
 		std::cout << "------p1's sign without enough grade test------\n";
 	}
@@ -59,8 +59,8 @@ int main()
 		std::cout << "------p2's Common test------\n";
 		Bureaucrat b1("br1_", 5);
 		std::cout << "------p2's execute without signed test------\n";
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------p2's execute without signed test------\n";
 	}
@@ -81,8 +81,8 @@ int main()
 		Bureaucrat b1("br1_", 25);
 		std::cout << "------p3's execute without enough grade test------\n";
 		b1.signForm(f2);
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------p3's execute without enough grade test------\n";
 	}
@@ -103,8 +103,8 @@ int main()
 		Bureaucrat b1("br1_", 5);
 		std::cout << "------p4's successfully test------\n";
 		b1.signForm(f2);
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------p4's successfully test------\n";
 	}
@@ -140,8 +140,8 @@ int main()
 		std::cout << "------R1's Common test------\n";
 		Bureaucrat b1("br1_", 73);
 		std::cout << "------R1's sign without enough grade test------\n";
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.signForm(f2);
 		std::cout << "------R1's sign without enough grade test------\n";
 	}
@@ -161,8 +161,8 @@ int main()
 		std::cout << "------R2's Common test------\n";
 		Bureaucrat b1("br1_", 45);
 		std::cout << "------R2's execute without signed test------\n";
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------R2's execute without signed test------\n";
 	}
@@ -183,8 +183,8 @@ int main()
 		Bureaucrat b1("br1_", 72);
 		std::cout << "------R3's execute without enough grade test------\n";
 		b1.signForm(f2);
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------R3's execute without enough grade test------\n";
 	}
@@ -205,8 +205,8 @@ int main()
 		Bureaucrat b1("br1_", 45);
 		std::cout << "------R4's successfully1 test------\n";
 		b1.signForm(f2);
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------R4's successfully1 test------\n";
 		std::cout << "------R4's Common test------\n";
@@ -218,8 +218,8 @@ int main()
 		Bureaucrat b2("br2_", 45);
 		std::cout << "------R4's successfully2 test------\n";
 		b2.signForm(f4);
-		std::cout << b2 << std::endl;
-		std::cout << f4 << std::endl;
+		b2 << std::cout;
+		f4 << std::cout;
 		b1.executeForm(f4);
 		std::cout << "------R4's successfully2 test------\n";
 	}
@@ -254,8 +254,8 @@ int main()
 		std::cout << "------S1's Common test------\n";
 		Bureaucrat b1("br1_", 146);
 		std::cout << "------S1's sign without enough grade test------\n";
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.signForm(f2);
 		std::cout << "------S1's sign without enough grade test------\n";
 	}
@@ -275,8 +275,8 @@ int main()
 		std::cout << "------S2's Common test------\n";
 		Bureaucrat b1("br1_", 137);
 		std::cout << "------S2's execute without signed test------\n";
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------S2's execute without signed test------\n";
 	}
@@ -297,8 +297,8 @@ int main()
 		Bureaucrat b1("br1_", 145);
 		std::cout << "------S3's execute without enough grade test------\n";
 		b1.signForm(f2);
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------S3's execute without enough grade test------\n";
 	}
@@ -319,8 +319,8 @@ int main()
 		Bureaucrat b1("br1_", 137);
 		std::cout << "------S4's successfully test------\n";
 		b1.signForm(f2);
-		std::cout << b1 << std::endl;
-		std::cout << f2 << std::endl;
+		b1 << std::cout;
+		f2 << std::cout;
 		b1.executeForm(f2);
 		std::cout << "------S4's successfully test------\n";
 	}

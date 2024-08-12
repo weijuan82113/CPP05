@@ -10,11 +10,12 @@ class Bureaucrat;
 class AForm
 {
 	public:
-		AForm(std::string name, int sign_grade, int execute_grade);
-		AForm(int sign_grade, int execute_grade);
-		virtual ~AForm();
+		AForm();
+		AForm(const int& sign_grade, const int& execute_grade);
+		AForm(const std::string& name, const int& sign_grade, const int& execute_grade);
+		~AForm();
 
-		AForm(const AForm &src);
+		AForm(const AForm& src);
 		AForm& operator=(const AForm& other);
 
 		class GradeTooHighException : public std::exception
@@ -48,23 +49,25 @@ class AForm
 				std::string msg_;
 		};
 		//ex02 ネストされたクラスが継承されないので、ネストクラスを呼ぶ関数をつくる
-		void throwCommonException(std::string msg) const;
+		void throwCommonException(const std::string& msg) const;
 
 		std::string getName() const;
 		bool getIsSigned() const;
 		int getSignGrade() const;
 		int getExecuteGrade() const;
 
-		friend std::ostream& operator<<(std::ostream& os,const AForm& f);
+		std::ostream& operator<<(std::ostream& os) const;
 		//ex01
-		void beSigned(Bureaucrat &b);
+		void beSigned(const Bureaucrat &b);
 		//ex02
-		virtual void execute(Bureaucrat const& executor) const = 0;
+		virtual void execute(const Bureaucrat& executor) const = 0;
 	private:
 		const std::string name_;
 		bool is_signed_;
 		const int sign_grade_;
 		const int execute_grade_;
+		static const int lowest_grade_;
+		static const int highest_grade_;
 };
 
 #endif

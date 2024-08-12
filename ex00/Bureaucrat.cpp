@@ -1,34 +1,41 @@
 #include "Bureaucrat.h"
 
-Bureaucrat::Bureaucrat(const std::string name, int grade):name_(name),grade_(grade)
+const int Bureaucrat::lowest_grade_ = 150;
+const int Bureaucrat::highest_grade_ = 1;
+
+
+Bureaucrat::Bureaucrat():name_(""), grade_(150) {};
+
+Bureaucrat::Bureaucrat(const int& grade):name_(""), grade_(grade)
 {
-	if (grade > 150)
+	if (grade > lowest_grade_)
 	{
 		throw GradeTooLowException();
 	}
-	else if (grade < 1)
+	else if (grade < highest_grade_)
 	{
 		throw GradeTooHighException();
 	}
 }
 
-Bureaucrat::Bureaucrat(int grade):grade_(grade)
+Bureaucrat::Bureaucrat(const std::string& name, const int& grade):name_(name),grade_(grade)
 {
-	if (grade > 150)
+	if (grade > lowest_grade_)
 	{
 		throw GradeTooLowException();
 	}
-	else if (grade < 1)
+	else if (grade < highest_grade_)
 	{
 		throw GradeTooHighException();
 	}
 }
+
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "the Bureaucrat's descruction: " << this->getName() << " is called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src) : name_(src.getName() + "copy_")
+Bureaucrat::Bureaucrat(const Bureaucrat& src) : name_(src.getName() + "copy_")
 {
 	std::cout << "the Bureaucrat's copy constructor is called, copy " << src.getName() << " into " << name_ << std::endl;
 	*this = src;
@@ -70,18 +77,20 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::GradeIncrement()
 {
-	if(--grade_ <= 0)
+	if(grade_ == 1)
 		throw(GradeTooHighException());
+	--grade_;
 }
 
 void Bureaucrat::GradeDecrement()
 {
-	if (++grade_ > 150)
-		throw(GradeTooHighException());
+	if (grade_ == 150)
+		throw(GradeTooLowException());
+	++grade_;
 }
 
-std::ostream& operator<<(std::ostream& os,const Bureaucrat& b)
+std::ostream& Bureaucrat::operator<<(std::ostream& os) const
 {
-	os <<  b.getName() << ", bureaucrat grade " << b.getGrade();
+	os <<  this->getName() << ", bureaucrat grade " << this->getGrade() << '\n';
 	return os;
 }

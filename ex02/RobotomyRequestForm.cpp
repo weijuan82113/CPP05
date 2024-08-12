@@ -3,9 +3,8 @@
 unsigned int RobotomyRequestForm::calculate_ratio_ = 0;
 
 RobotomyRequestForm::RobotomyRequestForm()
-	: AForm("RobotomyRequestForm", 72, 45) {}
-
-RobotomyRequestForm::~RobotomyRequestForm() {}
+	: AForm("RobotomyRequestForm", 72, 45),
+		target_("") {}
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
 	: AForm("RobotomyRequestForm", 72, 45),
@@ -13,6 +12,8 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target)
 {
 	std::cout << "<RobotomyRequestForm> Constructor is called" << std::endl;
 }
+
+RobotomyRequestForm::~RobotomyRequestForm() {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src)
 	: AForm(src)
@@ -37,7 +38,7 @@ std::string RobotomyRequestForm::getTarget() const
 	return target_;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const& executor) const
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	if (!this->getIsSigned())
 		throwCommonException("the form is unsigned\n");

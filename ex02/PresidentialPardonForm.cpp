@@ -1,9 +1,9 @@
 #include "PresidentialPardonForm.h"
 
 PresidentialPardonForm::PresidentialPardonForm()
-	: AForm("PresidentialPardonForm", 25, 5) {}
+	: AForm("PresidentialPardonForm", 25, 5),
+		target_("") {}
 
-PresidentialPardonForm::~PresidentialPardonForm() {}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
 	: AForm("PresidentialPardonForm", 25, 5),
@@ -11,6 +11,8 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target)
 {
 	std::cout << "<PresidentialPardonForm> Constructor is called" << std::endl;
 }
+
+PresidentialPardonForm::~PresidentialPardonForm() {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src)
 	: AForm(src)
@@ -35,7 +37,7 @@ std::string PresidentialPardonForm::getTarget() const
 	return target_;
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const& executor) const
+void PresidentialPardonForm::execute(const Bureaucrat& executor) const
 {
 	if (!this->getIsSigned())
 		throwCommonException("the form is unsigned\n");

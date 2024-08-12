@@ -9,49 +9,54 @@
 
 int main()
 {
+	//test form sign grade limit
 	try
 	{
-		Bureaucrat *b = new Bureaucrat("b1", 0);
-		Form *f = new Form("f1", 1, 0);
-		b->signForm(*f);
-		std::cout << *f << std::endl;
+		Form *f = new Form("f1", 0, 1);
+		*f << std::cout;
+		(void) f;
 	}
-	catch (std::exception &e)
+	catch(std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	//test form execute grade limit
 	try
 	{
-		Bureaucrat *b = new Bureaucrat("b2", 150);
-		Form *f = new Form("f2", 0, 0);
-		b->signForm(*f);
-		std::cout << *f << std::endl;
+		Form *f = new Form(1, 151);
+		*f << std::cout;
+		(void) f;
 	}
-	catch (std::exception &e)
+	catch(std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	//test sign without enough grade
 	try
 	{
 		Bureaucrat *b = new Bureaucrat("b3", 150);
-		Form *f = new Form("f3", 1, 0);
+		Form *f = new Form("f3", 1, 1);
+		*b << std::cout;
+		*f << std::cout;
 		b->signForm(*f);
-		std::cout << *f << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	//sign successfully
 	try
 	{
-		Bureaucrat *b = new Bureaucrat("b4", 1);
-		Form *f = new Form("f4", 1, 0);
+		Bureaucrat *b = new Bureaucrat("b4", 150);
+		Form *f = new Form("f4", 150, 150);
+		*b << std::cout;
+		*f << std::cout;
 		b->signForm(*f);
-		std::cout << *f << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	
 	return 0;
 }

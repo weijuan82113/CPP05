@@ -1,27 +1,56 @@
 #include "Form.h"
 
-Form::Form(std::string name, int sign_grade, int execute_grade)
+const int Form::lowest_grade_ = 150;
+const int Form::highest_grade_ = 1;
+
+Form::Form()
+	:	name_(""), 
+		is_signed_(false),
+		sign_grade_(1),
+		execute_grade_(1)
+{
+	if (sign_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the sign grade required has exceeded lowest limit");
+	else if (sign_grade_ < highest_grade_)
+		throw GradeTooHighException("Form Exception: the sign grade required has exceeded top limit");
+	else if (execute_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded lowest limit");
+	else if (execute_grade_ < highest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded top limit");
+}
+
+Form::Form(const int& sign_grade,const int& execute_grade)
+	:	name_(""),
+		is_signed_(false),
+		sign_grade_(sign_grade),
+		execute_grade_(execute_grade)
+{
+	if (sign_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the sign grade required has exceeded lowest limit");
+	else if (sign_grade_ < highest_grade_)
+		throw GradeTooHighException("Form Exception: the sign grade required has exceeded top limit");
+	else if (execute_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded lowest limit");
+	else if (execute_grade_ < highest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded top limit");
+}
+
+Form::Form(const std::string& name, const int& sign_grade, const int& execute_grade)
 	:	name_(name),
 		is_signed_(false),
 		sign_grade_(sign_grade),
 		execute_grade_(execute_grade)
 {
-	if (sign_grade_ > 150)
-		throw GradeTooLowException("Form Exception: the grade required has exceeded lowest limit");
-	else if (sign_grade_ < 1)
-		throw GradeTooHighException("Form Exception: the grade required has exceeded top limit");
+	if (sign_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the sign grade required has exceeded lowest limit");
+	else if (sign_grade_ < highest_grade_)
+		throw GradeTooHighException("Form Exception: the sign grade required has exceeded top limit");
+	else if (execute_grade_ > lowest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded lowest limit");
+	else if (execute_grade_ < highest_grade_)
+		throw GradeTooLowException("Form Exception: the execute grade required has exceeded top limit");
 }
 
-Form::Form(int sign_grade,int execute_grade)
-	:	is_signed_(false),
-		sign_grade_(sign_grade),
-		execute_grade_(execute_grade)
-{
-	if (sign_grade_ > 150)
-		throw GradeTooLowException("Form Exception: the grade required has exceeded lowest limit");
-	else if (sign_grade_ < 1)
-		throw GradeTooHighException("Form Exception: the grade required has exceeded top limit");
-}
 
 Form::~Form() {}
 
@@ -78,25 +107,27 @@ int Form::getExecuteGrade() const
 	return execute_grade_;
 }
 
-std::ostream& operator<<(std::ostream& os,const Form& f)
+
+std::ostream& Form::operator<<(std::ostream& os) const
 {
 	os << "【the form's information】\n"
-		<< "name: " + f.getName() << ", is_signed: "
-		<< f.getIsSigned()
+		<< "name: " + this->getName() << ", is_signed: "
+		<< this->getIsSigned()
 		<< ", reguired grade: "
-		<< f.getSignGrade()
+		<< this->getSignGrade()
 		<< ", executed grade: "
-		<< f.getExecuteGrade();
+		<< this->getExecuteGrade()
+		<< '\n';
 	return os;
 }
 
-void Form::beSigned(Bureaucrat &b)
+void Form::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() <= sign_grade_)
 		is_signed_ = true;
 	else
 	{
-		std::cout << b.getName() << " couldn't sign " << getName() << " because " << '\n';
+		std::cout << b.getName() << " couldn't sign " << getName() << " because ";
 		throw GradeTooLowException("Bureaucrat's grade is too low to sign");
 	}
 }
