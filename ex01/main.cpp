@@ -1,5 +1,11 @@
 #include "Bureaucrat.h"
 #include "Form.h"
+// #include <stdlib.h>
+
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q Form");
+}
 
 int main()
 {

@@ -43,17 +43,17 @@ Form& Form::operator=(const Form& other)
 }
 
 Form::GradeTooHighException::GradeTooHighException(std::string msg):msg_(msg) {};
-Form::GradeTooHighException::~GradeTooHighException() _NOEXCEPT{};
+Form::GradeTooHighException::~GradeTooHighException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW {};
 
-const char* Form::GradeTooHighException::what() const _NOEXCEPT
+const char* Form::GradeTooHighException::what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW
 {
 	return msg_.c_str();
 }
 
 Form::GradeTooLowException::GradeTooLowException(std::string msg):msg_(msg) {};
-Form::GradeTooLowException::~GradeTooLowException() _NOEXCEPT{};
+Form::GradeTooLowException::~GradeTooLowException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW {};
 
-const char* Form::GradeTooLowException::what() const _NOEXCEPT
+const char* Form::GradeTooLowException::what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW
 {
 	return msg_.c_str();
 }
