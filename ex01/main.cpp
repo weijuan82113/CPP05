@@ -15,6 +15,7 @@ int main()
 		Form *f = new Form("f1", 0, 1);
 		*f << std::cout;
 		(void) f;
+		delete (f);
 	}
 	catch(std::exception &e)
 	{
@@ -26,6 +27,7 @@ int main()
 		Form *f = new Form(1, 151);
 		*f << std::cout;
 		(void) f;
+		delete (f);
 	}
 	catch(std::exception &e)
 	{
@@ -39,6 +41,8 @@ int main()
 		*b << std::cout;
 		*f << std::cout;
 		b->signForm(*f);
+		delete (b);
+		delete (f);
 	}
 	catch (std::exception &e)
 	{
@@ -52,11 +56,13 @@ int main()
 		*b << std::cout;
 		*f << std::cout;
 		b->signForm(*f);
+		delete (b);
+		delete (f);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
+
 	return 0;
 }

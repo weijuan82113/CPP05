@@ -2,8 +2,7 @@
 const int Bureaucrat::lowest_grade_ = 150;
 const int Bureaucrat::highest_grade_ = 1;
 
-
-Bureaucrat::Bureaucrat():name_(""), grade_(150) {};
+Bureaucrat::Bureaucrat():name_(""), grade_(lowest_grade_) {};
 
 Bureaucrat::Bureaucrat(const int& grade):name_(""), grade_(grade)
 {
@@ -31,7 +30,7 @@ Bureaucrat::Bureaucrat(const std::string& name, const int& grade):name_(name),gr
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "the Bureaucrat's descruction: " << this->getName() << " is called" << std::endl;
+	std::cout << "the Bureaucrat's destruction: " << this->getName() << " is called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src) : name_(src.getName() + "copy_")
@@ -76,14 +75,14 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::GradeIncrement()
 {
-	if(grade_ == 1)
+	if(grade_ == highest_grade_)
 		throw(GradeTooHighException());
 	--grade_;
 }
 
 void Bureaucrat::GradeDecrement()
 {
-	if (grade_ == 150)
+	if (grade_ == lowest_grade_)
 		throw(GradeTooLowException());
 	++grade_;
 }
